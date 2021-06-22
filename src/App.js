@@ -1,40 +1,51 @@
-import '../src/App.css';
-import {browserrouter} from 'react-router-dom';
-import NavBar from './components/NavBar';
-import Homepage from './components/Homepage';
-import {Switch,Route} from 'react-router-dom';
-import Aboutus from './components/Aboutus';
-import Portfolio from './components/Portfolio';
-import Contact from './components/Contact';
-
+import './App.scss';
+import NavBar from './Components/NavBar';
+import HomePage from './Pages/HomePage';
+import {Switch, Route} from 'react-router-dom';
+import AboutPage from './Pages/AboutPage';
+import PortfliosPage from './Pages/PortfoliosPage';
+import BlogsPage from './Pages/BlogsPage';
+import ContactPage from './Pages/ContactPage';
+import { useState } from 'react';
 
 function App() {
+  const [navToggle, setNavToggle] = useState(false);
+
+  const navClick = () =>{
+    setNavToggle(!navToggle)
+  }
+
   return (
     <div className="App">
-     <div className="sidebar">
-       <NavBar/>
-     </div>
-     <div className="main-content">
-        <div className="content">
-        <switch>
-          <Route path="/" exact>
-          <Homepage/>
-          </Route>
-          <Route path="/About" exact>
-          <Aboutus/>
-          </Route>
-          <Route path="/Contact" exact>
-          <Contact/>
-          </Route>
-          <Route path="/Portfolio" exact>
-          <Portfolio/>
-          </Route>
-
-        </switch>
-         
-        </div>
-    
-    </div>
+      <div className={`sidebar ${navToggle ? 'nav-toggle': ''}`}>
+        <NavBar />
+      </div>
+      <div className="nav-btn" onClick={navClick}>
+        <div className="lines-1"></div>
+        <div className="lines-2"></div>
+        <div className="lines-3"></div>
+      </div>
+      <div className="main-content">
+          <div className="content">
+            <Switch>
+              <Route path="/" exact>
+                <HomePage />
+              </Route>
+              <Route path="/about" exact>
+                <AboutPage />
+              </Route>
+              <Route path="/portfolios" exact>
+                <PortfliosPage />
+              </Route>
+              <Route path="/blogs" exact>
+                <BlogsPage />
+              </Route>
+              <Route path="/contact" exact>
+                <ContactPage />
+              </Route>
+            </Switch>
+          </div>
+      </div>
     </div>
   );
 }
