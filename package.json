@@ -11,6 +11,7 @@
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "font-awesome": "^4.7.0",
+    "gh-pages": "^3.2.3",
     "jest-serializer": "^24.0.0-alpha.6",
     "node-sass": "^6.0.0",
     "react": "^17.0.2",
